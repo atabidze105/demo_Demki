@@ -1,0 +1,79 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
+        x:Class="DemoTab.MainWindow"
+		x:CompileBindings="False"
+        Title="DemoTab"
+		WindowStartupLocation="CenterOwner">
+	<Grid
+		ShowGridLines="false"
+		RowDefinitions="auto,auto,*"
+		ColumnDefinitions="*,*,*,*">
+		<StackPanel
+			Grid.Column="3">
+			<Button
+				Name="btn_addClient"
+				Content="Добавить клиента"
+				Click="AddClient"
+				Background="rgb(255, 156, 26)"/>
+		</StackPanel>
+		<ListBox
+			Name="lbox_clients"
+			Grid.Row="2" Grid.ColumnSpan="4"
+			Background="rgb(255, 255, 225)">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<Panel
+						Background="White"
+						DoubleTapped="Panel_DoubleTapped">
+						<Grid
+							ColumnDefinitions="auto,*,*,*"
+							ShowGridLines="false">
+							<Image
+								Source="{Binding Photopath}"/>
+							<StackPanel
+								Grid.Column="1"
+								Orientation="Vertical">
+								<TextBlock
+									Text="{Binding Id}"
+									FontSize="18"/>
+								<StackPanel
+									Margin="10 0">
+									<TextBlock
+										Text="{Binding FullName}"/>
+									<TextBlock
+										Text="{Binding IdGenderNavigation.Name}"/>
+									<StackPanel
+										Orientation="Horizontal">
+										<TextBlock
+											Text="Дата рождения: "/>
+										<TextBlock
+											Text="{Binding BirthdayText}"/>
+									</StackPanel>
+								</StackPanel>
+							</StackPanel>
+							<StackPanel
+								Grid.Column="2"
+								Orientation="Vertical"
+								Margin="10 20">
+								<StackPanel
+									Orientation="Horizontal">
+									<TextBlock
+										Text="Дата добавления: "/>
+									<TextBlock
+										Text="{Binding RegDateText}"/>
+								</StackPanel>
+								<TextBlock
+									Text="{Binding Email}"/>
+								<TextBlock
+									Text="{Binding Phone}"/>
+							</StackPanel>
+						</Grid>
+					</Panel>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+	</Grid>
+</Window>

@@ -1,0 +1,133 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="950"
+		MinHeight="950" MinWidth="1000"
+        x:Class="DemoTab.AddWindow"
+        Title="AddWindow"
+		x:CompileBindings="False"
+		WindowStartupLocation="CenterOwner">
+	<Grid
+		Name="grid_addwindow"
+		ShowGridLines="false"
+		RowDefinitions="*,5*,*"
+		ColumnDefinitions="*,3*,*"
+		Background="rgb(255, 255, 225)">
+		<StackPanel
+			Grid.Column="1" Grid.Row="1"
+			Background="White">
+			<TextBlock
+				Name="tblock_header"
+				HorizontalAlignment="Center"
+				FontSize="24" FontWeight="Bold"/>
+			<StackPanel
+				Orientation="Horizontal">
+				<TextBlock
+					Text="ID: "
+					FontSize="18"/>
+				<TextBlock
+					Name="tblock_id"
+					Text="{Binding Id}"
+					FontSize="18"/>
+			</StackPanel>
+			
+			<StackPanel
+				Orientation="Horizontal">
+				<TextBlock
+					Text="Дата добавления: "/>
+				<TextBlock
+					Name="tblock_adddate"
+					Text="{Binding RegDateText}"/>
+			</StackPanel>
+			<StackPanel
+				Orientation="Vertical">
+				<TextBox
+					Name="tbox_firstname"
+					Watermark="Фамилия"
+					Text="{Binding Firstname}"/>
+				<TextBox
+					Name="tbox_name"
+					Watermark="Имя"
+					Text="{Binding Name}"/>
+				<TextBox
+					Name="tbox_lastname"
+					Watermark="Отчество"
+					Text="{Binding Lastname}"/>
+				<TextBox
+					Name="tbox_email"
+					Watermark="Адрес электронной почты"
+					Text="{Binding Email}"/>
+				<TextBox
+					Name="tbox_phone"
+					Watermark="номер телефона"
+					Text="{Binding Phone}"/>
+				<ToggleSwitch
+					Name="tswitch_gender"
+					OnContent="Мужской"
+					OffContent="Женский"
+					IsChecked="{Binding GenderBool}"/>
+				<StackPanel
+					Orientation="Horizontal">
+					<StackPanel>
+						<TextBlock
+							Text="Дата рождения"
+							HorizontalAlignment="Center"/>
+						<Calendar
+							Name="calendar"
+							SelectedDate="{Binding Birthday}"/>
+					</StackPanel>
+					<!--изображение-->
+					<StackPanel>
+						<TextBlock
+							Text="Изображение" FontSize="18"
+							HorizontalAlignment="Center"/>
+						<Image 
+							Name="img_preview"
+							Width="100" 
+							HorizontalAlignment="Center"/>
+						<TextBlock
+							Name="tblock_preview"
+							HorizontalAlignment="Center"/>
+						<StackPanel
+							Orientation="Horizontal"
+							HorizontalAlignment="Center">							
+							<Button
+								Name="btn_delImage"
+								Content="Удалить"
+								IsVisible="False"
+								Background="rgb(255, 156, 26)"
+								Click="DelImage"/>
+							<Button
+								Name="btn_addImage"
+								Content="Добавить"
+								Background="rgb(255, 156, 26)"
+								Click="AddImage"/>
+						</StackPanel>
+					</StackPanel>
+				</StackPanel>
+				
+			</StackPanel>
+			<StackPanel
+				Margin="0 20 0 0"
+				HorizontalAlignment="Center"
+				Orientation="Horizontal">
+				<Button
+					Name="btn_cancel"
+					Content="Отмена"
+					Background="rgb(255, 156, 26)"
+					Click="Return"/>
+				<Button
+					Name="btn_delete"
+					Content="Удалить"
+					IsVisible="False"
+					Background="rgb(255, 156, 26)"
+					Click="Delete"/>
+				<Button
+					Name="btn_confirm"
+					Background="rgb(255, 156, 26)"
+					Click="Confirm"/>
+			</StackPanel>
+		</StackPanel>
+	</Grid>
+</Window>
